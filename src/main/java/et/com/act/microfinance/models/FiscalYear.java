@@ -5,6 +5,8 @@ import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -20,10 +22,10 @@ public class FiscalYear extends Shared {
     private String description;
 
     @Column(nullable = false)
-    private Date startsAt;
+    private LocalDateTime startsAt;
 
     @Column(nullable = false)
-    private Date endsAt;
+    private LocalDateTime endsAt;
 
     public FiscalYearResponse fiscalYearResponse() {
         return FiscalYearResponse.builder()

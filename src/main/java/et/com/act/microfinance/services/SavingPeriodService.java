@@ -65,8 +65,8 @@ public class SavingPeriodService {
         return savingPeriodRepo.findByMonth(month);
     }
 
-    public SavingPeriodResponse findById(Long id) {
-        return Objects.requireNonNull(savingPeriodRepo.findById(id).orElse(null)).savingPeriodResponse();
+    public SavingPeriod findById(Long id) {
+        return Objects.requireNonNull(savingPeriodRepo.findById(id).orElse(null));
     }
 
     public void saveAll(List<SavingPeriod> savingPeriods) {

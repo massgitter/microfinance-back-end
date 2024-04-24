@@ -41,6 +41,6 @@ public class SavingPeriodController {
 
     @GetMapping("/byId/{id}")
     public SavingPeriodResponse findById(@PathVariable("id") Long id) {
-        return savingPeriodService.findById(id);
+        return savingPeriodService.findById(id).savingPeriodResponse();
     }
 }

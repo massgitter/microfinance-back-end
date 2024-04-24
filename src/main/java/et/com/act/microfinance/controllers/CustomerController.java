@@ -4,18 +4,22 @@ import et.com.act.microfinance.requests.CustomerRequest;
 import et.com.act.microfinance.responses.CustomerResponse;
 import et.com.act.microfinance.responses.PersistenceResponse;
 import et.com.act.microfinance.services.CustomerService;
+import et.com.act.microfinance.utils.RolesEnum;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.annotation.security.RolesAllowed;
 import java.util.List;
 
 @RestController
 @RequestMapping("customer")
 @RequiredArgsConstructor
 @Tag(name = "Customer")
-@CrossOrigin("http://localhost:4200/**")
+@SecurityRequirement(name = "microfinance")
+@RolesAllowed(RolesEnum.Roles.ADMIN)
 public class CustomerController {
     private final CustomerService customerService;
 
@@ -36,7 +40,7 @@ public class CustomerController {
 
     @GetMapping("/byId/{id}")
     public CustomerResponse findById(@PathVariable Long id) {
-        return customerService.findById(id);
+        return customerService.findById(id).customerResponse();
     }
 
     @GetMapping("/all")

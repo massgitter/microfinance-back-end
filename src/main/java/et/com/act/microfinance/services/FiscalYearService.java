@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.sql.Connection;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.Month;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -47,8 +48,8 @@ public class FiscalYearService {
 
             SavingPeriod DEFAULT = SavingPeriod.builder()
                     .month("DEFAULT")
-                    .startsAt(LocalDate.now())
-                    .endsAt(LocalDate.now().plusDays(5))
+                    .startsAt(LocalDateTime.now())
+                    .endsAt(LocalDateTime.now().plusDays(5))
                     .fiscalYear(fiscalYear)
                     .build();
             if (Objects.isNull(savingPeriodRepo.findByMonthAndFiscalYear("DEFAULT", fiscalYear))) {
@@ -59,8 +60,8 @@ public class FiscalYearService {
 
             List<SavingPeriod> savingPeriods = months.stream()
                     .map(month -> {
-                        LocalDate startsAt = LocalDate.of(year, Month.valueOf(month), request.getPaymentStartsAt());
-                        LocalDate endsAt = LocalDate.of(year, Month.valueOf(month), request.getPaymentActiveFor());
+                        LocalDateTime startsAt = LocalDateTime.of(year, Month.valueOf(month), request.getPaymentStartsAt(), 1, 0);
+                        LocalDateTime endsAt = LocalDateTime.of(year, Month.valueOf(month), request.getPaymentActiveFor(), 1, 0);
                         return SavingPeriod.builder()
                                 .month(month)
                                 .startsAt(startsAt)
@@ -101,5 +102,9 @@ public class FiscalYearService {
 
     public List<FiscalYear> getAll() {
         return fiscalYearRepo.findAll();
+    }
+
+    public FiscalYear findByYear(int year) {
+        return fiscalYearRepo.findByYear(year);
     }
 }

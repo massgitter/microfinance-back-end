@@ -5,18 +5,19 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class SavingPeriodResponse {
+public class LoanResponse {
     private Long id;
-    private String month;
-    private LocalDateTime startsAt;
-    private LocalDateTime endsAt;
-    private FiscalYearResponse fiscalYearResponse;
+    private CustomerResponse customerResponse;
+    private double amount;
+    private double interest;
+    private double repaid;
+    private double remaining;
+    private LocalDateTime issuedAt;
+    private LocalDateTime returnDAte;
 }

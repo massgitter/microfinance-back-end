@@ -21,6 +21,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Objects;
@@ -150,8 +151,8 @@ public class CustomerService {
         }
     }
 
-    public CustomerResponse findById(Long id) {
-        return Objects.requireNonNull(customerRepo.findById(id).orElse(null)).customerResponse();
+    public Customer findById(Long id) {
+        return Objects.requireNonNull(customerRepo.findById(id).orElse(null));
     }
 
     public List<CustomerResponse> getAll(int page, int size) {

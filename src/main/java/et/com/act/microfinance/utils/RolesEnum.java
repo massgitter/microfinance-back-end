@@ -12,4 +12,8 @@ public enum RolesEnum {
     public String getName() {
         return name;
     }
+
+    public static class Roles {
+        public static final String ADMIN="admin";
+    }
 }

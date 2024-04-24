@@ -14,6 +14,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Data
@@ -27,9 +29,9 @@ public class Shared implements Serializable {
 
     @JsonIgnore
     @CreationTimestamp
-    private Date createdOn;
+    private LocalDateTime createdOn;
 
     @JsonIgnore
     @UpdateTimestamp
-    private Date updatedOn;
+    private LocalDateTime updatedOn;
 }

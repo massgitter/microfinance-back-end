@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.Year;
 import java.util.Date;
 
@@ -19,6 +20,6 @@ public class FiscalYearRequest {
     private String startingMonth;
     private int paymentStartsAt;
     private int paymentActiveFor;
-    private Date startsAt;
-    private Date endsAt;
+    private LocalDateTime startsAt;
+    private LocalDateTime endsAt;
 }

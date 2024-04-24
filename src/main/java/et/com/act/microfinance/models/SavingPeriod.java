@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Data
@@ -16,8 +17,8 @@ import java.time.LocalDate;
 @EqualsAndHashCode(callSuper = true)
 public class SavingPeriod extends Shared {
     private String month;
-    private LocalDate startsAt;
-    private LocalDate endsAt;
+    private LocalDateTime startsAt;
+    private LocalDateTime endsAt;
 
     @ManyToOne
     @JoinColumn(name = "fiscalYear")
